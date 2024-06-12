@@ -5,6 +5,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import plotly.express as px
+import os
 
 external_stylesheets = [
     {
@@ -139,4 +140,5 @@ def generate_chart(id):
     return fig
 
 if __name__ == "__main__":
-    app.run_server(debug=True, use_reloader=False)
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host="0.0.0.0", port=port, debug=True, use_reloader=False)
